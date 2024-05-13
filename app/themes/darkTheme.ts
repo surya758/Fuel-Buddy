@@ -1,12 +1,16 @@
+import { colors } from "./colors";
+import { typography } from "./typography";
+
 export const darkTheme = {
+  statusbar: 'dark',
   colors: {
-    primary: '#2c3e50',
-    secondary: '#1abc9c',
+    primary: '#000000',
+    secondary: '#ffffff',
+    tertiary: '#303030',
+    ...colors
     // ...
   },
-  typography: {
-    // ...
-  },
+  typography: typography,
   dimensions: {
     // ...
   },
