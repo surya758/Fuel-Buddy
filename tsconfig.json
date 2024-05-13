@@ -7,6 +7,9 @@
       "@navigation/*": ["./app/navigation/*"],
       "@themes": ["./app/themes"],
       "@context/*": ["./app/context/*"],
+      "@api/*": ["./app/api/*"],
+      "@services/*": ["./app/services/*"],
+      "@hooks/*": ["./app/hooks/*"],
     }
   }
 }
