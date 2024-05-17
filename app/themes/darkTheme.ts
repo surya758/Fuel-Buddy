@@ -4,13 +4,13 @@ import { typography } from "./typography";
 export const darkTheme = {
   statusbar: 'dark',
   colors: {
-    primary: '#000000',
+    primary: '#0e1111',
     secondary: '#ffffff',
     tertiary: '#303030',
     ...colors
     // ...
   },
-  typography: typography,
+  typography,
   dimensions: {
     // ...
   },

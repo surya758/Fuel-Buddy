@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { Appearance, ColorSchemeName } from "react-native";
+import { Appearance } from "react-native";
 import { lightTheme, darkTheme } from "@themes";
 import { storeData, getData } from "@helper/storage";
 interface ThemeContextProps {

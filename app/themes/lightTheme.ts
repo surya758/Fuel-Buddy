@@ -5,12 +5,12 @@ export const lightTheme = {
   statusbar: 'light',
   colors: {
     primary: '#ffffff',
-    secondary: '#000000',
+    secondary: '#0e1111',
     tertiary: '#ecf0f1',
     ...colors
     // ...
   },
-  typography: typography,
+  typography,
   dimensions: {
     // ...
   },

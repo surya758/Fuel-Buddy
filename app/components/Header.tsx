@@ -49,7 +49,7 @@ const styleHandler = (theme) =>
 		lowerContainer: {
 			backgroundColor: theme.colors.primary,
 			justifyContent: "space-between",
-			padding: 10,
+			marginVertical: 10,
 			flexDirection: "row",
 			alignItems: "center",
 		},
