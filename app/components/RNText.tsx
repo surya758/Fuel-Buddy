@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextProps, TextStyle, View, ViewStyle } from "react-native";
 import React, { PropsWithChildren } from "react";
 import { useTheme } from "@context/ThemeContext";
 import { theme } from "@utils/types";
 
-type Props = PropsWithChildren<{}>;
+type Props = TextProps &
+	PropsWithChildren<{
+		style?: TextStyle;
+	}>;
 
-const RNText = ({ children }: Props) => {
+const RNText = ({ children, style }: Props) => {
 	const { theme } = useTheme();
 	const styles = styleHandler(theme);
-	return <Text style={styles.text}>{children}</Text>;
+	return <Text style={[styles.text, style]}>{children}</Text>;
 };
 
 export default RNText;

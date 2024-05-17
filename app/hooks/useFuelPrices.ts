@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getFuelPrice } from '@services/fuelPriceService';
+import { IFuelPrices } from '@utils/types';
 
 const useFuelPrices = (state: string, city: string) => {
-  const [fuelPrices, setFuelPrices] = useState([]);
+  const [fuelPrices, setFuelPrices] = useState<IFuelPrices>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 

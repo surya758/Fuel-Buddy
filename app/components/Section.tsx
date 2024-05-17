@@ -17,5 +17,11 @@ export default Section;
 
 const styleHandler = (theme: theme) =>
 	StyleSheet.create({
-		container: {},
+		container: {
+			marginVertical: 10,
+			padding: 10,
+			borderWidth: 1,
+			borderRadius: 4,
+			borderColor: theme.colors.secondary,
+		},
 	});

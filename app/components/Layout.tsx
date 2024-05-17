@@ -1,4 +1,4 @@
-import { StyleSheet, View, ViewStyle } from "react-native";
+import { ScrollView, StyleSheet, View, ViewStyle } from "react-native";
 import React, { PropsWithChildren } from "react";
 import { useTheme } from "@context/ThemeContext";
 import { theme } from "@utils/types";

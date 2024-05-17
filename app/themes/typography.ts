@@ -5,10 +5,14 @@ export const typography = {
   },
   subHeader: {
     fontSize: 16,
-    fontFamily: "Montserrat-Bold",
+    fontFamily: "Lato-Black",
   },
   body: {
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
   },
+  number: {
+    fontSize: 40,
+    fontFamily: 'Montserrat-Bold',
+  }
 }

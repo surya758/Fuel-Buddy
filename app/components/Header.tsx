@@ -62,5 +62,5 @@ const styleHandler = (theme) =>
 			flexDirection: "row",
 			alignItems: "center",
 		},
-		componentStyle: { paddingHorizontal: 3 },
+		componentStyle: { marginLeft: 8 },
 	});
