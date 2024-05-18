@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React, { ReactNode, ReactElement } from "react";
 import Constants from "expo-constants";
@@ -33,7 +33,12 @@ const Header = ({ title, components }: Props) => {
 	return (
 		<View>
 			<StatusBar style={theme.statusbar === "light" ? "dark" : "light"} />
-			<View style={{ height: Constants.statusBarHeight, backgroundColor: theme.colors.primary }} />
+			<View
+				style={{
+					height: Constants.statusBarHeight,
+					backgroundColor: theme.colors.primary,
+				}}
+			/>
 			<View style={styles.lowerContainer}>
 				<Text style={styles.titleText}>{title}</Text>
 				{components && renderComponents()}

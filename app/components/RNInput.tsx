@@ -27,6 +27,7 @@ export default RNInput;
 const styleHandler = (theme: theme) =>
 	StyleSheet.create({
 		inputText: {
+			flex: 1,
 			marginLeft: 10,
 			color: theme.colors.secondary,
 			fontFamily: theme.typography.number.fontFamily,

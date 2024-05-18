@@ -1,4 +1,5 @@
-import Calculate from "./Calculate";
-import Result from "./Result";
+import CalculateScreen from "./Calculate";
+import ResultScreen from "./Result";
+import SelectionScreen from "./Selection";
 
-export { Calculate, Result };
+export { CalculateScreen, ResultScreen, SelectionScreen };

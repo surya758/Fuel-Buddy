@@ -1,16 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { SelectionScreenNavigationProp } from "@utils/types";
 
-type Props = {};
-
-const ResultScreen = (props: Props) => {
+const SelectionScreen = () => {
 	return (
 		<View>
-			<Text>Result</Text>
+			<Text>Selection</Text>
 		</View>
 	);
 };
 
-export default ResultScreen;
+export default SelectionScreen;
 
 const styles = StyleSheet.create({});
