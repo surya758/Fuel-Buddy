@@ -15,6 +15,17 @@ export interface IFuelPrices {
   }
 }
 
+type stateObjectType = {
+  stateId: string;
+  stateName: string;
+}
+
+export interface IState {
+  states: stateObjectType[];
+}
+
+export interface ICity { }
+
 export type CalculateStackParamList = {
   Calculate: undefined;
   Selection: undefined;

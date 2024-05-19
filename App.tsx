@@ -2,6 +2,7 @@ import "react-native-gesture-handler";
 import RootNav from "@navigation/RootNav";
 import { ThemeProvider } from "@context/ThemeContext";
 import { useFonts } from "expo-font";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function App() {
 	const [fontsLoaded, fontError] = useFonts({
@@ -16,9 +17,13 @@ export default function App() {
 		return null;
 	}
 
+	const queryClient = new QueryClient();
+
 	return (
-		<ThemeProvider>
-			<RootNav />
-		</ThemeProvider>
+		<QueryClientProvider client={queryClient}>
+			<ThemeProvider>
+				<RootNav />
+			</ThemeProvider>
+		</QueryClientProvider>
 	);
 }

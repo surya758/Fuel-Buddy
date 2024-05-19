@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Switch, View, ScrollView } from "react-native";
 import React, { useState } from "react";
-import useFuelPrices from "@hooks/useFuelPrices";
+import { useStateList, useFuelPrices, useCityList } from "@hooks/useFuelPrices";
 import { useTheme } from "@context/ThemeContext";
 import { Header, Section, RNText, Layout, RNInput, RNButton } from "@components";
 import { TITLE } from "@utils/constants";
@@ -17,7 +17,8 @@ const CalculateScreen = () => {
 	const [fuelEfficiency, setFuelEfficiency] = useState("0");
 	const [isDistanceNull, setIsDistanceNull] = useState(false);
 	const [isFuelEfficiencyNull, setIsFuelEfficiencyNull] = useState(false);
-	const { fuelPrices, isLoading, error } = useFuelPrices(state, city);
+	const { data: stateList } = useStateList();
+	const { data: fuelData, isLoading: isFuelDataLoading, error } = useFuelPrices(state, city);
 
 	const styles = styleHandler(theme);
 
@@ -65,12 +66,12 @@ const CalculateScreen = () => {
 	};
 
 	const calculatePrice = () => {
-		if (isLoading) return;
+		if (isFuelDataLoading) return;
 		!parseFloat(distance) ? setIsDistanceNull(true) : setIsDistanceNull(false);
 		!parseFloat(fuelEfficiency) ? setIsFuelEfficiencyNull(true) : setIsFuelEfficiencyNull(false);
 		if (!parseFloat(distance) || !parseFloat(fuelEfficiency)) return;
 
-		const fuelPrice = fuelPrices?.fuel?.diesel?.retailPrice;
+		const fuelPrice = fuelData.fuel.diesel.retailPrice;
 		const distanceCovered = parseFloat(distance);
 		const fuelEfficiencyInt = parseFloat(fuelEfficiency);
 
@@ -80,7 +81,9 @@ const CalculateScreen = () => {
 		alert(`Total cost of fuel: ₹${totalCost}`);
 	};
 
-	const handleStateSelection = () => {};
+	const handleStateSelection = () => {
+		navigation.navigate("Selection");
+	};
 	const handleCitySelection = () => {};
 
 	return (
@@ -108,7 +111,7 @@ const CalculateScreen = () => {
 						<View style={styles.iconContainer}>
 							<FontAwesome name='rupee' size={30} color={theme.colors.secondary} />
 						</View>
-						<RNText style={styles.numberText}>{fuelPrices?.fuel?.diesel?.retailPrice}</RNText>
+						<RNText style={styles.numberText}>{fuelData?.fuel?.diesel?.retailPrice ?? 0}</RNText>
 					</View>
 				</Section>
 

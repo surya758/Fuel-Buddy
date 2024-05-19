@@ -1,29 +1,25 @@
-import { useState, useEffect } from 'react';
-import { getFuelPrice } from '@services/fuelPriceService';
-import { IFuelPrices } from '@utils/types';
+import { getFuelPrice, getListOfState, getListOfCityByState } from '@services/fuelPriceService';
+import { ICity, IFuelPrices, IState } from '@utils/types';
+import { useQuery } from '@tanstack/react-query';
 
-const useFuelPrices = (state: string, city: string) => {
-  const [fuelPrices, setFuelPrices] = useState<IFuelPrices>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+type ApiCall<T> = (state?: string, city?: string) => Promise<T>;
+type Dependencies = string[];
+type Keys = (string | number)[];
 
-  useEffect(() => {
-    const fetchFuelPrices = async () => {
-      setIsLoading(true);
-      try {
-        const prices = await getFuelPrice(state, city);
-        setFuelPrices(prices);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+const createUseQueryHook = <T>(apiCall: ApiCall<T>, dependencies: Dependencies, keys: Keys = []) => {
+  const queryKey = [...keys];
+  const { data, isLoading, error } = useQuery({
+    queryKey,
+    queryFn: () => apiCall(...dependencies)
+      .then(data => {
+        if (data === undefined) throw new Error('Data is undefined')
+        return data
+      }),
+  })
 
-    fetchFuelPrices();
-  }, []);
+  return { data, isLoading, error };
+}
 
-  return { fuelPrices, isLoading, error };
-};
-
-export default useFuelPrices;
+export const useStateList = () => createUseQueryHook<IState>(getListOfState, [], ['listOfState'])
+export const useCityList = (state: string) => createUseQueryHook<ICity>(getListOfCityByState, [state], ['listOfCity', state])
+export const useFuelPrices = (state: string, city: string) => createUseQueryHook<IFuelPrices>(getFuelPrice, [state, city], ['fuelPrices', state, city])
