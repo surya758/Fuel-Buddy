@@ -29,6 +29,7 @@ const styleHandler = (theme: theme) =>
 			padding: 10,
 			borderRadius: 5,
 			marginTop: 10,
+			marginBottom: 30,
 			alignItems: "center",
 		},
 		text: {

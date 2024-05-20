@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
-import React, { PropsWithChildren } from "react";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
+import React from "react";
 import { theme } from "@utils/types";
 import { useTheme } from "@context/ThemeContext";
 import { RNInput, RNText } from "@components";
@@ -35,6 +35,7 @@ const styleHandler = (theme: theme, windowWidth: number) =>
 		},
 		dataText: {
 			fontSize: theme.typography.result.fontSize,
+			textAlign: "center",
 		},
 		captionText: {
 			textAlign: "center",

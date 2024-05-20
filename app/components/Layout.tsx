@@ -1,4 +1,12 @@
-import { Keyboard, StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from "react-native";
+import {
+	Keyboard,
+	KeyboardAvoidingView,
+	Platform,
+	StyleSheet,
+	TouchableWithoutFeedback,
+	View,
+	ViewStyle,
+} from "react-native";
 import React, { PropsWithChildren } from "react";
 import { useTheme } from "@context/ThemeContext";
 import { theme } from "@utils/types";

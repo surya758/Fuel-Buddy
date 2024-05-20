@@ -71,7 +71,6 @@ const styleHandler = (theme: theme, left: boolean) =>
 		},
 		lowerContainerLeft: {
 			backgroundColor: theme.colors.primary,
-			// justifyContent: "space-between",
 			marginVertical: 10,
 			flexDirection: "row",
 			alignItems: "center",

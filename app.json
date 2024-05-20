@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Fuel-Buddy",
-    "slug": "Fuel-Buddy",
+    "slug": "fuel-buddy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,6 +26,12 @@
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8abb7e32-a24e-47f8-802b-6a3ee21d0b0b"
+      }
+    },
+    "owner": "suryakant758"
   }
 }

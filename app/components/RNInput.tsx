@@ -18,12 +18,14 @@ const RNInput = ({ style, ...rest }: RNInputProps) => {
 			autoCorrect={false}
 			autoComplete='off'
 			inputMode='decimal'
+			returnKeyType='done'
 			{...rest}
 		/>
 	);
 };
 
 export default RNInput;
+
 const styleHandler = (theme: theme) =>
 	StyleSheet.create({
 		inputText: {

@@ -16,7 +16,7 @@ export const typography = {
     fontFamily: 'Montserrat-Bold',
   },
   result: {
-    fontSize: 80,
+    fontSize: 70,
     fontFamily: 'Montserrat-Bold',
   }
 }

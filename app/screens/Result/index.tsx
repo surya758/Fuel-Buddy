@@ -31,11 +31,11 @@ const ResultScreen = (props: Props) => {
 			<Header title='Results' left components={[BackIconComponent]} />
 			<View style={styles.container}>
 				<InfoField data={distanceCovered} caption={"Distance covered (in Km)"} />
-				<InfoField data={totalCost.toFixed(2)} caption={"Total cost of the trip (in Rupee)"} />
+				<InfoField data={totalCost.toFixed(2)} caption={"Total cost of the trip (in ₹)"} />
 				<InfoField data={fuelConsumed.toFixed(2)} caption={"Total fuel consumed (in L)"} />
 				<InfoField
 					data={`${(totalCost / distanceCovered).toFixed(2)}`}
-					caption={"Cost per km (in Rupee)"}
+					caption={"Cost per km (in ₹)"}
 				/>
 			</View>
 		</Layout>
