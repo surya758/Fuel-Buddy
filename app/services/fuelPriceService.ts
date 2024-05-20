@@ -27,7 +27,12 @@ const getListOfState = async () => {
 
 const getListOfCityByState = async (state: string) => {
   try {
-    const response = await apiClient.get(`list/india/${state}/cities`)
+    const response = await apiClient.get(`list/india/${state}/cities`, {
+      params: {
+        isoDate: '2022-09-01',
+        'fuelTypes[0]': 'petrol'
+      },
+    })
     return response.data;
   } catch (error) {
     if (error.response.status === 429) return;

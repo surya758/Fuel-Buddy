@@ -3,35 +3,34 @@ import { StatusBar } from "expo-status-bar";
 import React, { ReactNode, ReactElement } from "react";
 import Constants from "expo-constants";
 import { useTheme } from "@context/ThemeContext";
+import { theme } from "@utils/types";
 
-type Props = {
+type HeaderProps = {
 	title: string;
 	components?: Array<ReactNode | ReactElement>;
+	left?: boolean;
 };
 
-const Header = ({ title, components }: Props) => {
-	const { theme, setTheme } = useTheme();
-	const styles = styleHandler(theme);
+const Header = ({ title, components, left }: HeaderProps) => {
+	const { theme } = useTheme();
+	const styles = styleHandler(theme, left);
 
 	const renderComponents = () => {
-		if (Object.keys(components).length > 1) {
-			return (
-				<View style={styles.renderComponentContainer}>
-					{components.map((component, index) => {
-						return (
-							<View key={index} style={styles.componentStyle}>
-								{component}
-							</View>
-						);
-					})}
-				</View>
-			);
-		}
-		return <View>{components}</View>;
+		return (
+			<View style={styles.renderComponentContainer}>
+				{components.map((component, index) => {
+					return (
+						<View key={index} style={styles.componentStyle}>
+							{component}
+						</View>
+					);
+				})}
+			</View>
+		);
 	};
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<StatusBar style={theme.statusbar === "light" ? "dark" : "light"} />
 			<View
 				style={{
@@ -39,21 +38,40 @@ const Header = ({ title, components }: Props) => {
 					backgroundColor: theme.colors.primary,
 				}}
 			/>
-			<View style={styles.lowerContainer}>
-				<Text style={styles.titleText}>{title}</Text>
-				{components && renderComponents()}
-			</View>
+			{left ? (
+				<View style={styles.lowerContainerLeft}>
+					{components && renderComponents()}
+					<Text style={styles.titleText}>{title}</Text>
+				</View>
+			) : (
+				<View style={styles.lowerContainer}>
+					<Text style={styles.titleText}>{title}</Text>
+					{components && renderComponents()}
+				</View>
+			)}
 		</View>
 	);
 };
 
 export default Header;
 
-const styleHandler = (theme) =>
+const styleHandler = (theme: theme, left: boolean) =>
 	StyleSheet.create({
+		container: {
+			paddingHorizontal: 10,
+			borderBottomWidth: 1,
+			borderBottomColor: theme.colors.secondary,
+		},
 		lowerContainer: {
 			backgroundColor: theme.colors.primary,
 			justifyContent: "space-between",
+			marginVertical: 10,
+			flexDirection: "row",
+			alignItems: "center",
+		},
+		lowerContainerLeft: {
+			backgroundColor: theme.colors.primary,
+			// justifyContent: "space-between",
 			marginVertical: 10,
 			flexDirection: "row",
 			alignItems: "center",
@@ -67,5 +85,5 @@ const styleHandler = (theme) =>
 			flexDirection: "row",
 			alignItems: "center",
 		},
-		componentStyle: { marginLeft: 8 },
+		componentStyle: { marginLeft: left ? 0 : 8, marginRight: left ? 8 : 0 },
 	});

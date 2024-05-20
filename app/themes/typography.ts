@@ -14,5 +14,9 @@ export const typography = {
   number: {
     fontSize: 40,
     fontFamily: 'Montserrat-Bold',
+  },
+  result: {
+    fontSize: 80,
+    fontFamily: 'Montserrat-Bold',
   }
 }

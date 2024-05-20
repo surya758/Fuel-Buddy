@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 import RootNav from "@navigation/RootNav";
 import { ThemeProvider } from "@context/ThemeContext";
+import { LocationProvider } from "@context/LocationContext";
 import { useFonts } from "expo-font";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -22,7 +23,9 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ThemeProvider>
-				<RootNav />
+				<LocationProvider>
+					<RootNav />
+				</LocationProvider>
 			</ThemeProvider>
 		</QueryClientProvider>
 	);

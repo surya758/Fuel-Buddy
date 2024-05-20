@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View, ViewStyle } from "react-native";
+import { Keyboard, StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from "react-native";
 import React, { PropsWithChildren } from "react";
 import { useTheme } from "@context/ThemeContext";
 import { theme } from "@utils/types";
@@ -10,7 +10,11 @@ type Props = PropsWithChildren<{
 const Layout = ({ children, style }: Props) => {
 	const { theme } = useTheme();
 	const styles = styleHandler(theme);
-	return <View style={[styles.container, style]}>{children}</View>;
+	return (
+		<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+			<View style={[styles.container, style]}>{children}</View>
+		</TouchableWithoutFeedback>
+	);
 };
 
 export default Layout;
@@ -20,6 +24,5 @@ const styleHandler = (theme: theme) =>
 		container: {
 			flex: 1,
 			backgroundColor: theme.colors.primary,
-			paddingHorizontal: 10,
 		},
 	});

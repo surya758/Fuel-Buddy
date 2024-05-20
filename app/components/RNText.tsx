@@ -8,10 +8,14 @@ type Props = TextProps &
 		style?: TextStyle;
 	}>;
 
-const RNText = ({ children, style }: Props) => {
+const RNText = ({ children, style, ...config }: Props) => {
 	const { theme } = useTheme();
 	const styles = styleHandler(theme);
-	return <Text style={[styles.text, style]}>{children}</Text>;
+	return (
+		<Text style={[styles.text, style]} {...config}>
+			{children}
+		</Text>
+	);
 };
 
 export default RNText;
